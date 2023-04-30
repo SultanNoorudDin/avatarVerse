@@ -1,0 +1,114 @@
+.ChatListHeader{
+    font-weight: bolder;
+}
+
+.main-block{
+  height: 3rem;
+  display: flex;
+  width: 98%;
+}
+
+.p-c-h{
+  width: calc(100% - 42px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+    height: 4rem;
+    border-radius: 10px;
+}
+
+.p-c-h:hover{
+  background-color: rgb(245, 243, 242);
+}
+.ch-la-me-ti{
+  font-size: smaller;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.gen-in{
+    width: 65%;
+}
+
+.ch-na{
+  height: 50%;
+  font-weight: bold;
+}
+
+.ch-la-me{
+  font-size:small;
+  display: flex;
+  height: 50%;
+  align-items: flex-end;
+}
+
+
+.p-img{
+  width: 13%;
+  height: 100%;
+}
+
+.img{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.chatlistmerge{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px rgb(218, 213, 213);
+}
+
+.c-l-m-l{
+    display: flex;
+    width: calc(100% - 42px);
+    margin: 20px 0px 20px 0;
+
+}
+
+.input-with-icon {
+  position: relative;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.input-with-icon i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 1rem ;
+  color: #ccc;
+}
+
+.searchinput {
+    padding-left: 32px;
+    width: calc(100% - 42px);
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Set font size as a percentage of the line-height */
+    font-size: 1rem; /* Set line-height equal to the height of the input bar */
+    height: 2.5rem !important;
+
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .input-with-icon input {
+      font-size: 20px;
+      line-height: 50px;
+      height: 50px;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .input-with-icon input {
+      font-size: 16px;
+      line-height: 30px;
+      height: 30px;
+    }
+  }
+  
+  

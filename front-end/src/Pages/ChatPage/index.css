@@ -1,0 +1,18 @@
+.MessageUi{
+    display:flex ;
+    width: 100%;
+}
+
+.left-side-message{
+    position: relative;
+    background-color: white;
+    height: 100%;
+    width: 40%;
+}
+
+.right-side-message{
+    position: relative;
+    background-color: white;
+    height: 100%;
+    width: 60%;
+}
