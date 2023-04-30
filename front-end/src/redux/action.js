@@ -2,6 +2,7 @@ import {
 	SET_USER_CONFIG,
 	SET_USER_PREF,
 	SET_MASTER_APP_LOADING,
+	SET_LOGIN_USER,
 } from "./action-types";
 
 const setUserConfig = (userConfig) => ({ type: SET_USER_CONFIG, userConfig });
@@ -11,8 +12,11 @@ const setIsMasterAppLoading = (isMasterAppLoading) => ({
 	isMasterAppLoading,
 });
 
+const setLoginUser = (loginUser) => ({ type: SET_LOGIN_USER, loginUser });
+
 export default {
 	setUserConfig,
 	setUserPref,
 	setIsMasterAppLoading,
+	setLoginUser,
 };

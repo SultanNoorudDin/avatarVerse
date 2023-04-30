@@ -2,67 +2,60 @@ var express = require('express');
 var app = express();
 var sql = require("mssql");
 const cors = require("cors")
-const http = require("http");
-const {Server} = require("socket.io")
-
 app.use(cors());
-
 app.use(express.json())
-
-const server = http.createServer(app)
-
-const io = new Server(server,{
-    cors:{
-        origin:"http://localhost:3000",
-        methods:["get","post"]
-    }
-})
-
-
-server.listen(5000, function () {
-    
-    ///Server is connect
-    console.log('Server is running..');
-
-    ///Database is connected
-    sql.connect(config).then(() => {
-        console.log('Connected to SQL Server');
-    }).catch(err => {
-        console.log('Failed to connect to SQL Server', err);
-    });
-    
-});
-
-
-// config for your database
+    // config for your database
 const config = require("./DataBase/dbConfig")    
 
 
 
 app.post('/addData',function(req,res){
-    console.log("hello")
+
     const EmployeeID = req.body.EmployeeID
     const FirstName = req.body.FirstName
     const LastName = req.body.LastName
-    console.log("hello")
-    const Age = req.body.EmployeeID
+
+    const Age = req.body.Age
     const Gender = req.body.Gender
-    console.log("hello")
+
     var m = parseInt(Age)
-    sql.query(`INSERT INTO EmployeeDemo (EmployeeID, FirstName, LastName, Age, Gender) VALUES ('${EmployeeID}', '${FirstName}','${LastName}','${11}','${Gender}')`
+    sql.query(`INSERT INTO User (EmployeeID, FirstName, LastName, Age, Gender) VALUES ('${EmployeeID}', '${FirstName}','${LastName}','${parseInt(Age)}','${Gender}')`
     ,(err,result) => {
         if(err){
             console.log(err)
         }
         else{
             res.send("values Inserted")
+            console.log("done")
         }
     })
 })
 
+app.get('/login', function (req, res) {
+    const email = req.query.email;
+    const password = req.query.password;
+  
+    const sqlQuery = 'SELECT COUNT(*) AS count FROM Users WHERE Email = @Email AND Password = @Password';
+    const parameters = [
+      { name: 'Email', type: sql.NVarChar, value: email },
+      { name: 'Password', type: sql.NVarChar, value: password },
+    ];
+  
+    sql.query(sqlQuery, parameters)
+      .then(result => {
+        const count = result.recordset[0].count;
+        res.send({ success: count === 1 });
+      })
+      .catch(err => {
+        console.log('Failed to execute query', err);
+        res.status(500).send({ error: 'Failed to execute query' });
+      });
+  });
+  
+  
+
 app.get('/myname', function (req, res) {
-    sql.query('SELECT * FROM EmployeeDemo').then(result => {
-        console.log(result.recordset);
+    sql.query('SELECT * FROM Users').then(result => {
         res.send(result.recordset)
     }).catch(err => {
         console.log('Failed to execute query', err);
@@ -81,6 +74,24 @@ app.get('/myname', function (req, res) {
    //     });
    // });
    
+});
+
+
+
+
+
+var server = app.listen(5000, function () {
+    
+    ///Server is connect
+    console.log('Server is running..');
+
+    ///Database is connected
+    sql.connect(config).then(() => {
+        console.log('Connected to SQL Server');
+    }).catch(err => {
+        console.log('Failed to connect to SQL Server', err);
+    });
+    
 });
 
 

@@ -136,27 +136,9 @@ const NavBarView = (props) => {
 								onClick={toggleColorMode}
 							/>
 						</Tooltip>
-						<Tooltip label="About App">
-							<IconButton
-								ms={3}
-								variant="link"
-								icon={<BsFillInfoCircleFill boxSize={"20px"} />}
-								onClick={onPressAboutApp}
-							/>
-						</Tooltip>
-						<Tooltip label="Settings">
-							<IconButton
-								ms={3}
-								me={1}
-								variant="link"
-								icon={<SettingsIcon boxSize={"20px"} />}
-								onClick={onPressSettings}
-							/>
-						</Tooltip>
 					</Flex>
 				</Flex>
-				<SettingsView ref={settingsRef} />
-				<AboutApp ref={aboutAppRef} />
+				
 			</>
 		);
 	};

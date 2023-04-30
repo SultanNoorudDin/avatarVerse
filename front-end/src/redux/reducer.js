@@ -2,6 +2,7 @@ import {
 	SET_USER_CONFIG,
 	SET_USER_PREF,
 	SET_MASTER_APP_LOADING,
+	SET_LOGIN_USER,
 } from "./action-types";
 
 import { REHYDRATE } from "redux-persist/src/constants";
@@ -38,6 +39,11 @@ const initial = {
 		favPlaceArray: [],
 		isMasterAppLoading: false,
 	},
+	LoginUser: {
+		UserName: null,
+		Avatar: null,
+		passworrd: null,
+	},
 };
 
 const reducer = (state = initial, action) => {
@@ -52,6 +58,9 @@ const reducer = (state = initial, action) => {
 			return Object.assign({}, state, {
 				isMasterAppLoading: action.isMasterAppLoading,
 			});
+
+		case SET_LOGIN_USER:
+			return Object.assign({}, state, { LoginUser: action.loginUser });
 
 		case REHYDRATE:
 			return { ...state, ...action.payload };
